@@ -1,0 +1,89 @@
+@font-face {
+    font-family: "Outfit-Regular";
+    src: url(/fonts/Outfit-Regular.ttf);
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Outfit-Bold";
+    src: url(/fonts/Outfit-Bold.ttf);
+    font-weight: 700;
+    font-display: swap;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --white: hsl(0, 0%, 100%);
+    --light-gray: hsl(212, 45%, 89%);
+    --grayish-blue: hsl(220, 15%, 55%);
+    --dark-blue: hsl(218, 44%, 22%);
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    display: grid;
+    margin: 0;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
+    background-color: var(--light-gray);
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    text-align: center;
+}
+
+.card {
+    border-radius: 1rem;
+    padding: 1rem 1rem 1.5rem 1rem;
+    background-color: var(--white);
+    max-width: 40ch;
+    box-shadow: 2px 3px 20px 0px rgb(0 0 0 / 4%);
+}
+.card_img {
+    border-radius: 0.6em;
+    max-width: 100%;
+    display: block;
+}
+
+.card_title {
+    font-family: "Outfit-Bold";
+    color: var(--dark-blue);
+    font-size: 1.5em;
+}
+
+.card_desc {
+    font-family: "Outfit-Regular";
+    color: var(--grayish-blue);
+    font-size: 1.1em;
+}
+
+.attribution {
+    font-size: 11px;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+.hidden_menu {
+    position: absolute;
+    top: -10em;
+    background: var(--white);
+    color: var(--dark-blue);
+    padding: 1em;
+    border-radius: 0.5rem 0.3em;
+    font-family: "Outfit-Bold";
+}
+
+.hidden_menu:focus {
+    top: 0;
+    transition: top 350ms ease-in;
+}
