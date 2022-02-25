@@ -1,0 +1,207 @@
+@font-face {
+    font-family: "RedHat-medium";
+    src: url("fonts/RedHatDisplay-Medium.ttf");
+    font-weight: 500;
+    font-display: swap;
+}
+@font-face {
+    font-family: "RedHat-bold";
+    src: url("fonts/RedHatDisplay-Bold.ttf");
+    font-weight: 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: "RedHat-black";
+    src: url("fonts/RedHatDisplay-Black.ttf");
+    font-weight: 900;
+    font-display: swap;
+}
+
+:root {
+    --pale-blue: hsl(225, 100%, 94%);
+    --bright-blue: hsl(245, 75%, 52%);
+    --very-pale-blue: hsl(225, 100%, 98%);
+    --desaturated-blue: hsl(224, 23%, 55%);
+    --dark-blue: hsl(223, 47%, 23%);
+    --brighter-blue: hsl(245, 68%, 62%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+body {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: var(--pale-blue);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hidden_menu {
+    position: absolute;
+    top: -10rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-family: "RedHat-bold";
+    background-color: #fff;
+}
+
+.hidden_menu:focus {
+    top: 0;
+    transition: top 350ms ease;
+}
+
+.sr_only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: circle(0);
+    border: 0;
+}
+.card {
+    background-color: #fff;
+    border-radius: 1.2rem;
+    max-width: 40ch;
+    overflow: hidden;
+    box-shadow: 0 1em 1.6em 0.2em hsl(223deg 47% 23% / 20%);
+}
+.card_content {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+.card_title {
+    font-family: "RedHat-black";
+    color: var(--dark-blue);
+}
+
+.card_desc {
+    font-family: "RedHat-medium";
+    color: var(--desaturated-blue);
+}
+
+.card_info {
+    background-color: var(--very-pale-blue);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card_info > .card_icon {
+    content: url("images/icon-music.svg");
+}
+
+.card_summary {
+    text-align: start;
+}
+
+.card_plan {
+    font-family: "RedHat-bold";
+    color: var(--dark-blue);
+    font-size: 0.9rem;
+}
+
+.card_price {
+    font-family: "RedHat-medium";
+    color: var(--desaturated-blue);
+    font-size: 0.9rem;
+}
+
+.card_info > a {
+    color: var(--bright-blue);
+    text-decoration: underline;
+    font-family: "RedHat-bold";
+    font-size: 0.8rem;
+}
+.card_info > a:hover {
+    color: var(--brighter-blue);
+    text-decoration: none;
+}
+.btn_primary {
+    width: 100%;
+    color: #fff;
+    background-color: var(--bright-blue);
+    padding-inline: 2em;
+    padding-block: 0.8em;
+    border-radius: 0.8em;
+    display: block;
+    font-family: "RedHat-bold";
+    margin-block-end: 1.3em;
+    box-shadow: 0.1em 0.2em 1em 0.2em hsl(245deg 75% 25% / 50%);
+}
+
+.btn_primary:hover {
+    background-color: var(--brighter-blue);
+}
+
+.btn_secondary {
+    color: var(--desaturated-blue);
+    font-family: "RedHat-black";
+    font-size: 0.9em;
+}
+
+.btn_secondary:hover {
+    color: var(--dark-blue);
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 375px) {
+    .card {
+        max-width: 50ch;
+    }
+
+    .card_content {
+        padding: 3rem;
+        gap: 2rem;
+    }
+    .card_summary {
+        flex-grow: 2;
+    }
+    .card_plan,
+    .card_price {
+        display: block;
+    }
+}
