@@ -1,0 +1,192 @@
+@font-face {
+    font-family: "Outfit-Light";
+    src: url("fonts/Outfit-Light.ttf");
+    font-weight: 300;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Outfit-Regular";
+    src: url("fonts/Outfit-Regular.ttf");
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Outfit-SemiBold";
+    src: url("fonts/Outfit-SemiBold.ttf");
+    font-weight: 600;
+    font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+body {
+    margin: 0;
+}
+:root {
+    --soft-blue: hsl(215, 51%, 70%);
+    --cyan: hsl(178, 100%, 50%);
+    --dark-blue-bg: hsl(217, 54%, 11%);
+    --dark-blue-card: hsl(216, 50%, 16%);
+    --dark-blue: hsl(215, 32%, 27%);
+    --white: hsl(0, 0%, 100%);
+}
+
+body {
+    min-height: 100vh;
+    font-size: 18px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    background-color: var(--dark-blue-bg);
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.hidden_menu {
+    position: absolute;
+    top: -10em;
+    background-color: var(--white);
+    color: var(--dark-blue);
+    font-family: "Outfit-SemiBold";
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.hidden_menu:focus {
+    top: 0;
+    transition: top 350ms ease;
+}
+main {
+    margin: auto;
+}
+.card {
+    display: grid;
+    background-color: var(--dark-blue-card);
+    padding: 1.5rem;
+    max-width: 33ch;
+    border-radius: 1rem;
+    gap: 0.5em;
+    box-shadow: 0 1em 1.2em 0.7em rgba(0, 0, 0, 0.2);
+}
+
+.card_img_container {
+    position: relative;
+    border-radius: 0.6rem;
+    overflow: hidden;
+}
+.card_title {
+    color: var(--white);
+    font-family: "Outfit-SemiBold";
+    font-size: 1.2em;
+    margin-block-start: 0.7em;
+}
+
+.card_desc {
+    font-family: "Outfit-Light";
+    color: var(--soft-blue);
+    font-size: 0.9em;
+}
+
+.card_info {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block-end: 1rem;
+}
+.card_info::after {
+    content: "";
+    height: 1px;
+    background-color: var(--dark-blue);
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.card_price {
+    color: var(--cyan);
+    font-family: "Outfit-SemiBold";
+    position: relative;
+}
+.card_price,
+.card_time {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+.card_price > .card_icon {
+    content: url(images/icon-ethereum.svg);
+}
+
+.card_time {
+    color: var(--soft-blue);
+    font-family: "Outfit-Regular";
+    position: relative;
+}
+
+.card_time > .card_icon {
+    content: url(images/icon-clock.svg);
+}
+.card_author {
+    color: var(--soft-blue);
+    font-family: "Outfit-Regular";
+    font-size: 0.9em;
+    margin-block-start: 0.5em;
+}
+
+.card_author > img {
+    display: inline;
+    max-width: 2rem;
+    border: 1px solid var(--white);
+    border-radius: 50%;
+    margin-inline-end: 1em;
+    vertical-align: middle;
+}
+
+.card_author > a {
+    color: var(--white);
+}
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    color: var(--white);
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+.card_title:hover,
+.card_author > a:hover {
+    cursor: pointer;
+    color: var(--cyan);
+}
+
+.card_img_container:hover::after {
+    content: "";
+    background: center / 3rem no-repeat url(images/icon-view.svg), hsla(178, 100%, 50%, 0.2);
+    inset: 0;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+}
