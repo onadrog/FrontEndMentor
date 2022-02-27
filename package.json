@@ -1,0 +1,22 @@
+{
+  "name": "frontendmentor-challenges",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/onadrog/FrontEndMentor.git",
+  "author": "onadrog <sebastien.gordano@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "css-declaration-sorter": "^6.1.4",
+    "cssnano": "^5.0.17",
+    "postcss": "^8.4.7",
+    "postcss-cli": "^9.1.0"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "build": "postcss ./**/*.css --env prod --no-map --config . --base . --ext min.css --dir .",
+    "watch": "postcss ./**/*.css --config . --base . --ext min.css --dir . -w"
+  }
+}
