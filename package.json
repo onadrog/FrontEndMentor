@@ -16,7 +16,7 @@
     "defaults"
   ],
   "scripts": {
-    "build": "postcss ./**/*.css --env prod --no-map --config . --base . --ext min.css --dir .",
-    "watch": "postcss ./**/*.css --config . --base . --ext min.css --dir . -w"
+    "build": "postcss ./**/style.css --env prod --no-map --config . --base . --ext min.css --dir .",
+    "watch": "postcss ./**/style.css --config . --base . --ext min.css --dir . -w"
   }
 }
