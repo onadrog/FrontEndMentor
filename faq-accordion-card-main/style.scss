@@ -1,0 +1,204 @@
+@use "../sass_helper" as *;
+
+$font_regular: "KumbhSans-Regular";
+$font_bold: "KumbhSans-Bold";
+
+@include font_face($family: $font_regular);
+@include font_face($family: $font_bold, $weight: 700);
+
+:root {
+  --very-dark-desaturated-blue: hsl(238, 29%, 16%);
+  --soft-red: hsl(14, 88%, 65%);
+  --soft-violet: hsl(273, 75%, 66%);
+  --soft-blue: hsl(240, 73%, 65%);
+  --very-dark-grayish-blue: hsl(237, 12%, 33%);
+  --dark-grayish-blue: hsl(240, 6%, 50%);
+  --light-grayish-blue: hsl(240, 5%, 91%);
+  --fz-0: clamp(0.75rem, calc(0.75rem + 0vw), 0.75rem);
+  --fz-1: clamp(0.9rem, calc(0.89rem + 0.06vw), 0.94rem);
+  --fz-2: clamp(1.3rem, calc(1.24rem + 0.25vw), 1.47rem);
+}
+
+@include body_reset {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fz-0);
+  background: linear-gradient(to bottom, var(--soft-violet), var(--soft-blue));
+  color: var(--dark-grayish-blue);
+}
+
+details {
+  font-family: $font_regular;
+  border-bottom: 1px solid var(--light-grayish-blue);
+  p {
+    color: var(--dark-grayish-blue);
+    margin-block-end: 1rem;
+    max-width: 40ch;
+  }
+  summary {
+    position: relative;
+    color: var(--very-dark-grayish-blue);
+    padding-block: 0.8em;
+    cursor: pointer;
+    list-style: none;
+    font-size: var(--fz-1);
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 0.8em;
+      height: 0.8em;
+      background: center / contain no-repeat url(images/icon-arrow-down.svg);
+    }
+  }
+  &[open] {
+    > summary {
+      color: var(--very-dark-desaturated-blue);
+      font-family: $font_bold;
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+    > p {
+      animation: 450ms cubic-bezier(0.25, 1, 0.3, 1) wipe-in-down both;
+    }
+  }
+}
+
+.card {
+  background-color: #fff;
+  display: grid;
+  border-radius: 1.5rem;
+  padding: 2rem 1rem 3rem 1rem;
+  width: 88vw;
+  min-height: 50vh;
+  position: relative;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  margin-block-start: 2rem;
+  gap: 1rem;
+  box-shadow: 0px 4px 3rem 0rem rgb(0 0 0 / 30%);
+  & header {
+    font-family: $font_bold;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    text-align: center;
+    font-size: var(--fz-2);
+    color: var(--very-dark-desaturated-blue);
+    margin-block-start: 6rem;
+  }
+  & .illustrations {
+    position: relative;
+    overflow: visible;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    & picture {
+      position: absolute;
+    }
+  }
+}
+
+picture {
+  &.header_illu {
+    top: -9rem;
+  }
+
+  &.header_bg {
+    top: -2rem;
+  }
+}
+
+img.header_box {
+  display: none;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  color: #fff;
+  & a {
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+@media (hover) {
+  details {
+    summary:hover {
+      color: var(--soft-red);
+    }
+  }
+}
+
+@media screen and(min-width: 769px) {
+  .card {
+    width: 70vw;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3.5rem 7rem 5rem 7rem;
+    margin-block-start: unset;
+    & header,
+    & section {
+      grid-column: 2;
+    }
+    & header {
+      position: static;
+      display: block;
+      margin-block-start: 0;
+      text-align: start;
+    }
+    & .illustrations {
+      display: block;
+      inset: -3.5rem 0rem -5rem -7rem;
+      grid-row: 1/-1;
+      width: auto;
+      position: absolute;
+      overflow: hidden;
+      picture {
+        &.header_bg {
+          top: 54%;
+          transform: scale(2) translate(-33%, -32%);
+        }
+        &.header_illu {
+          top: 54%;
+          left: -15%;
+          transform: translateY(-55%);
+        }
+      }
+    }
+  }
+
+  details {
+    summary::after {
+      margin-inline-end: 1rem;
+    }
+    p {
+      max-width: unset;
+    }
+  }
+
+  img {
+    &.header_box {
+      display: block;
+      left: -5.8rem;
+      top: 50%;
+      position: absolute;
+      transform: translateY(-25%);
+    }
+  }
+}
+
+@keyframes wipe-in-down {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}

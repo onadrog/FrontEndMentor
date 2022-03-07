@@ -4,3 +4,5 @@
 node_m*
 yarn.lock
 build
+.parcel-*
+dist
