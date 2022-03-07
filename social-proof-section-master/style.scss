@@ -1,0 +1,164 @@
+@use "../sass_helper/" as *;
+@use "./sass/mixins/mixins" as m;
+$ff_r: "Spartan-Regular";
+$ff_m: "Spartan-Medium";
+$ff_b: "Spartan-Bold";
+
+@include font_face($family: $ff_r);
+@include font_face($family: $ff_m, $weight: 500);
+@include font_face($family: $ff_b, $weight: 700);
+
+:root {
+  --very-Dark-Magenta: hsl(300, 43%, 22%);
+  --soft-Pink: hsl(333, 80%, 67%);
+  --dark-Grayish-Magenta: hsl(303, 10%, 53%);
+  --light-Grayish-Magenta: hsl(300, 24%, 96%);
+  --White: hsl(0, 0%, 100%);
+  --fz--2: clamp(0.64rem, calc(0.66rem + -0.02vw), 0.65rem);
+  --fz-0: clamp(0.94rem, calc(0.92rem + 0.09vw), 1rem);
+  --fz-5: clamp(2.33rem, calc(2.08rem + 2.08vw), 3.5rem);
+}
+@include body_reset {
+  --bg-t: url(images/bg-pattern-top-mobile.svg);
+  --bg-b: url(images/bg-pattern-bottom-mobile.svg);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  font-size: var(--fz-0);
+  font-family: $ff_r;
+  background-color: var(--White);
+  background: var(--bg-t) top left no-repeat, var(--bg-b) bottom right no-repeat;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.grid {
+  --gap: 2.5rem;
+  --m-gap: calc(var(--gap) / 2);
+  display: grid;
+  gap: var(--gap);
+  padding: 5rem 1rem;
+  & header {
+    color: var(--dark-Grayish-Magenta);
+    & h2 {
+      font-family: $ff_b;
+      color: var(--very-Dark-Magenta);
+      line-height: 1;
+      font-size: var(--fz-5);
+      margin-block-end: var(--gap);
+    }
+  }
+}
+
+.grid__rating {
+  display: grid;
+  gap: var(--m-gap);
+  grid-template-rows: repeat(3, 1fr);
+  &_star {
+    background-color: var(--light-Grayish-Magenta);
+    padding: 0.5em;
+    border-radius: 0.5em;
+    position: relative;
+    font-family: $ff_b;
+    color: var(--very-Dark-Magenta);
+    &::before {
+      content: "";
+      position: relative;
+      background-image: url(images/icon-star.svg);
+      width: calc(17px * 5);
+      height: 1rem;
+      top: 0;
+      margin: 0 auto;
+      display: block;
+      margin-block-end: var(--m-gap);
+    }
+  }
+}
+
+.grid__users {
+  display: grid;
+  gap: var(--m-gap);
+  text-align: start;
+  & .card {
+    display: grid;
+    padding: 1rem;
+    background-color: var(--very-Dark-Magenta);
+    color: var(--White);
+    grid-auto-flow: row;
+    border-radius: 0.5em;
+    padding: 2rem;
+    & header {
+      color: var(--2);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      justify-items: start;
+      column-gap: 1.5em;
+      margin-block-end: 2em;
+    }
+    & cite {
+      font-family: $ff_b;
+      color: var(--White);
+      font-style: normal;
+    }
+    & span {
+      color: var(--soft-Pink);
+      font-family: $ff_m;
+    }
+    & img {
+      border-radius: 50%;
+      grid-row: 1/-1;
+      width: 3em;
+    }
+  }
+}
+
+.attribution {
+  font-size: var(--fz--2);
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 769px) {
+  body {
+    --bg-t: url(images/bg-pattern-top-desktop.svg);
+    --bg-b: url(images/bg-pattern-bottom-desktop.svg);
+    text-align: start;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    padding: 5rem;
+    row-gap: calc(var(--gap) * 1.5);
+    & header {
+      & h2 {
+        margin-block-end: var(--m-gap);
+      }
+      & p {
+        max-width: 80%;
+      }
+    }
+  }
+  .grid__users {
+    grid-auto-flow: column;
+    grid-column: 1/-1;
+    @include m.nth_child_translateY(".card");
+  }
+  .grid__rating {
+    @include m.nth_child_translateX(".grid__rating_star");
+    &_star {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      max-width: 75%;
+      padding: 1em;
+      &::before {
+        margin-block-end: unset;
+        margin: 0;
+      }
+    }
+  }
+}

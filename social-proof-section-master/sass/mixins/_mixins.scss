@@ -1,0 +1,15 @@
+@mixin nth_child_translateY($selector) {
+  @for $i from 3 to 5 {
+    & #{$selector}:nth-child(#{$i}) {
+      transform: translateY(calc(#{$i}em - 1em));
+    }
+  }
+}
+@mixin nth_child_translateX($selector) {
+  @for $i from 3 to 5 {
+    & #{$selector}:nth-child(#{$i}) {
+      transform: translateX(calc(-100% / #{$i}));
+      left: 50%;
+    }
+  }
+}
