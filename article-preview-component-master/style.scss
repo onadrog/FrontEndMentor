@@ -1,0 +1,232 @@
+@use "../sass_helper/" as *;
+@use "./sass/mixins/mixins" as m;
+
+$ff_m: "Manrope-Medium";
+$ff_b: "Manrope-Bold";
+
+@include font_face($family: $ff_m, $weight: 500);
+@include font_face($family: $ff_b, $weight: 700);
+
+:root {
+  --very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+  --desaturated-Dark-Blue: hsl(214, 17%, 51%);
+  --grayish-Blue: hsl(212, 23%, 69%);
+  --light-Grayish-Blue: hsl(210, 46%, 95%);
+  --fz--1: clamp(0.65rem, calc(0.69rem + -0.04vw), 0.68rem);
+  --fz-0: clamp(0.81rem, calc(0.81rem + 0vw), 0.81rem);
+  --fz-1: clamp(0.98rem, calc(0.96rem + 0.06vw), 1.02rem);
+  --fz-2: clamp(1.17rem, calc(1.14rem + 0.15vw), 1.27rem);
+}
+
+@include body_reset() {
+  font-size: var(--fz-0);
+  font-family: $ff_m;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-color: var(--light-Grayish-Blue);
+  justify-content: center;
+  align-items: center;
+  color: var(--very-Dark-Grayish-Blue);
+}
+
+.card {
+  --padding: 1.5rem;
+  --gap: 2rem;
+  --inner-gap: 0.7rem;
+  background-color: #fff;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-auto-flow: row;
+  gap: var(--gap);
+  grid-template-columns: 40ch;
+  box-shadow: 0 0 0.1rem 0 rgba($color: #000000, $alpha: 0.5);
+  &__image {
+    max-height: 13.5rem;
+    object-fit: cover;
+    object-position: top;
+    width: fit-content;
+  }
+  &__title {
+    font-size: var(--fz-1);
+    line-height: 1.6;
+    font-family: $ff_b;
+  }
+  &__content {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: var(--inner-gap);
+    padding-inline: var(--padding);
+  }
+  &__author {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    &__picture {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+    }
+    &__name {
+      font-family: $ff_b;
+    }
+  }
+  &__socials {
+    @include m.pseudo_el(
+      $selector: "__links__fb",
+      $url: "images/icon-facebook.svg"
+    );
+    @include m.pseudo_el(
+      $selector: "__links__tt",
+      $url: "images/icon-twitter.svg"
+    );
+    @include m.pseudo_el(
+      $selector: "__links__pt",
+      $url: "images/icon-pinterest.svg"
+    );
+    @include m.pseudo_el($selector: "__label", $url: "images/icon-share.svg") {
+      padding: 1.275em;
+      color: var(--light-Grayish-Blue);
+      position: relative;
+    }
+    &__links {
+      display: flex;
+      position: absolute;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--grayish-Blue);
+      text-transform: uppercase;
+      letter-spacing: 0.45em;
+      animation: 500ms cubic-bezier(0, 0.7, 0.68, 0.89) circle-to-left-out
+        forwards;
+      inset: 0 calc(var(--padding) * -1);
+      background-color: var(--very-Dark-Grayish-Blue);
+      padding-inline-start: var(--gap);
+      padding-inline-end: 7rem;
+    }
+    &__input:checked {
+      ~ .card__socials {
+        &__label {
+          background-color: var(--desaturated-Dark-Blue);
+          &::before {
+            filter: brightness(10) saturate(10) hue-rotate(360deg);
+          }
+        }
+        &__links {
+          animation: 500ms cubic-bezier(0, 0.7, 0.68, 0.89) circle-to-left
+            forwards;
+        }
+      }
+    }
+    &__label {
+      border-radius: 50%;
+      background-color: var(--light-Grayish-Blue);
+      z-index: 5;
+    }
+  }
+}
+
+.attribution {
+  font-size: var(--fz--1);
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 769px) {
+  .card {
+    overflow: visible;
+    grid-template-columns: 20vmax 35vmax;
+    gap: unset;
+    &__image {
+      max-height: unset;
+      height: 100%;
+      border-top-left-radius: inherit;
+      border-bottom-left-radius: inherit;
+    }
+    &__title {
+      font-size: var(--fz-2);
+    }
+    &__content {
+      padding: 2rem 2.5rem 2rem 2rem;
+      grid-template-rows: repeat(3, auto);
+    }
+    &__socials {
+      &__input:checked {
+        ~ .card__socials {
+          &__links {
+            animation: 500ms cubic-bezier(0, 0.7, 0.68, 0.89) circle-to-top
+              forwards;
+          }
+        }
+      }
+      &__links {
+        padding: 2em;
+        inset: 0 0 0 100%;
+        min-width: 16rem;
+        border-radius: 0.5em;
+        transform: translate(-57%, -160%);
+        animation: 500ms cubic-bezier(0, 0.7, 0.68, 0.89) circle-to-top-out
+          forwards;
+
+        &::after {
+          content: "";
+          background-color: inherit;
+          height: 1em;
+          width: 2em;
+          display: block;
+          bottom: -0.9em;
+          position: absolute;
+          clip-path: polygon(0 0, 50% 100%, 100% 0);
+          right: 50%;
+          transform: translateX(50%);
+        }
+      }
+    }
+  }
+}
+
+@keyframes circle-to-left {
+  from {
+    opacity: 0.75;
+    clip-path: circle(0% at 88% 2.4rem);
+  }
+  to {
+    opacity: 1;
+    clip-path: circle(150% at left);
+  }
+}
+@keyframes circle-to-left-out {
+  from {
+    clip-path: circle(150% at left);
+  }
+  to {
+    opacity: 0;
+    clip-path: circle(0% at 88% 2.4rem);
+  }
+}
+
+@keyframes circle-to-top {
+  from {
+    opacity: 0.75;
+    clip-path: circle(0% at 50% 6.4rem);
+  }
+  to {
+    clip-path: circle(100% at top);
+  }
+}
+@keyframes circle-to-top-out {
+  from {
+    opacity: 1;
+    clip-path: circle(100% at top);
+  }
+  to {
+    opacity: 0;
+    clip-path: circle(0% at 50% 6.4rem);
+  }
+}

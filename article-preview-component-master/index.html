@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Article preview component</title>
+    <link rel="stylesheet" href="style.scss">
+  </head>
+
+  <body>
+    <a href="#main" class="hidden_menu">Skip to main content</a>
+    <h1 class="sr_only">Last articles</h1>
+    <main id="main">
+      <article class="card">
+        <img src="images/drawers.jpg" alt="A green drawer with decorations on it." class="card__image">
+        <h2 class="sr_only">Room tip by Michelle Appleton</h2>
+        <section class="card__content">
+          <h3 class="card__title">
+            Shift the overall look and feel by adding these wonderful
+            touches to furniture in your home
+          </h3>
+          <p>
+            Ever been in a room and felt like something was missing? Perhaps
+            it felt slightly bare and uninviting. I’ve got some simple tips
+            to help you make any room feel complete.
+          </p>
+          <footer class="card__author">
+            <img src="images/avatar-michelle.jpg" alt="Michelle Appleton profile picture."
+              class="card__author__picture">
+            <div>
+              <span class="card__author__name">Michelle Appleton</span><br aria-hidden="true" />
+              <time datetime="2020-06-28">28 Jun 2020</time>
+            </div>
+            <input class="card__socials__input sr_only" type="checkbox" name="share" id="share">
+            <label class="card__socials__label" for="share" aria-label="Share links"></label>
+            <ul class="card__socials__links">
+              <li>Share</li>
+              <li><a class="card__socials__links__fb" aria-label="Facebook" href="#"></a></li>
+              <li><a class="card__socials__links__tt" aria-label="Twitter" href="#"></a></li>
+              <li><a class="card__socials__links__pt" aria-label="Pinterest" href="#"></a></li>
+            </ul>
+          </footer>
+        </section>
+      </article>
+    </main>
+
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+      Coded by <a target="_blank" href="https://sebastiengordano.com">Sébastien Gordano</a>
+    </footer>
+  </body>
+
+</html>

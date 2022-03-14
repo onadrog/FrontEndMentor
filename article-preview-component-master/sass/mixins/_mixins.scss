@@ -1,0 +1,11 @@
+@mixin pseudo_el($selector, $pseudo: "before", $url, $size: 1rem) {
+  &#{$selector}::#{$pseudo} {
+    content: "";
+    display: block;
+    background: center no-repeat url(#{$url});
+    width: $size;
+    height: $size;
+    cursor: pointer;
+    @content;
+  }
+}
