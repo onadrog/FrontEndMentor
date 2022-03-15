@@ -1,0 +1,143 @@
+@use "../sass_helper/" as *;
+
+$ff_el: "Poppins-ExtraLight";
+$ff_r: "Poppins-Regular";
+$ff_sb: "Poppins-SemiBold";
+
+@include font_face($family: $ff_el, $weight: 200);
+@include font_face($family: $ff_r, $weight: 400);
+@include font_face($family: $ff_sb, $weight: 600);
+
+:root {
+  --Red: hsl(0, 78%, 62%);
+  --Cyan: hsl(180, 62%, 55%);
+  --Orange: hsl(34, 97%, 64%);
+  --Blue: hsl(212, 86%, 64%);
+  --Very-Dark-Blue: hsl(234, 12%, 34%);
+  --Grayish-Blue: hsl(229, 6%, 66%);
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --fz--1: clamp(0.75rem, calc(0.79rem + -0.05vw), 0.78rem);
+  --fz-0: clamp(0.94rem, calc(0.94rem + 0vw), 0.94rem);
+  --fz-1: clamp(1.13rem, calc(1.11rem + 0.07vw), 1.17rem);
+  --fz-2: clamp(1.35rem, calc(1.31rem + 0.17vw), 1.47rem);
+  --fz-3: clamp(1.94rem, calc(1.82rem + 0.52vw), 2.29rem);
+}
+
+@include body_reset() {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-content: center;
+  font-size: var(--fz-0);
+  font-family: $ff_r;
+  background-color: var(--Very-Light-Gray);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 30ch;
+  gap: 2rem;
+  justify-content: center;
+  color: var(--Very-Dark-Blue);
+  padding: 5rem 1rem;
+  &__header {
+    text-align: center;
+    &__title {
+      font-size: var(--fz-2);
+      font-family: $ff_el;
+      font-weight: 200;
+      line-height: 1;
+    }
+    &__subtitle {
+      font-size: var(--fz-2);
+      font-family: $ff_sb;
+    }
+    &__content {
+      font-size: var(--fz-0);
+      font-family: $ff_el;
+      color: var(--Grayish-Blue);
+    }
+  }
+}
+
+.card {
+  box-shadow: 0 0 1em 0 rgba(0 0 0 / 0.2);
+  border-top: 5px solid var(--color);
+  padding: 2em;
+  display: grid;
+  gap: 0.5rem;
+  border-radius: 0.3rem;
+
+  &.sup {
+    --color: var(--Cyan);
+  }
+  &.team {
+    --color: var(--Red);
+  }
+  &.karma {
+    --color: var(--Orange);
+  }
+  &.calc {
+    --color: var(--Blue);
+  }
+  &__illu {
+    justify-self: end;
+  }
+  &__title {
+    font-size: var(--fz-1);
+    font-family: $ff_sb;
+  }
+  &__content {
+    color: var(--Grayish-Blue);
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 769px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, auto);
+    padding-inline: 10rem;
+    &__header {
+      grid-column: 2 / span 4;
+      grid-row: 1 / span 2;
+      line-height: 2;
+      &__title,
+      &__subtitle {
+        font-size: var(--fz-3);
+      }
+      &__content {
+        max-width: 55ch;
+        line-height: 1.5;
+        margin: 0 auto;
+      }
+    }
+  }
+  .card {
+    &.sup {
+      grid-row: 4 / span 2;
+      grid-column: 1 / span 2;
+    }
+    &.team {
+      grid-column: 3 / span 2;
+      grid-row: 3 / span 2;
+    }
+    &.karma {
+      grid-column: 3 / span 2;
+      grid-row: 5 / span 2;
+    }
+    &.calc {
+      grid-column: 5 / span 2;
+      grid-row: 4 / span 2;
+    }
+    &__content {
+      font-size: var(--fz--1);
+    }
+  }
+}
