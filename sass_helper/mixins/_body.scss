@@ -3,6 +3,7 @@
     text-rendering: optimizeSpeed;
     min-height: 100vh;
     line-height: 1.5;
+    font-size: var(--fz-0);
     @content;
   }
 }
