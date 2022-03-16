@@ -1,0 +1,130 @@
+@use "../sass_helper/" as *;
+
+$ff_r: "Karla-Regular";
+$ff_b: "Karla-Bold";
+
+@include font_face($family: $ff_r);
+@include font_face($family: $ff_b, $weight: 700);
+
+:root {
+  --Cyan: hsl(179, 62%, 43%);
+  --Light-Cyan: hsl(179, 62%, 60%);
+  --Bright-Yellow: hsl(71, 73%, 54%);
+  --Light-Gray: hsl(204, 43%, 93%);
+  --Grayish-Blue: hsl(218, 22%, 67%);
+  --fz--2: clamp(0.64rem, calc(0.71rem + -0.08vw), 0.69rem);
+  --fz--1: clamp(0.8rem, calc(0.84rem + -0.05vw), 0.83rem);
+  --fz-0: clamp(1rem, calc(1rem + 0vw), 1rem);
+  --fz-1: clamp(1.2rem, calc(1.18rem + 0.08vw), 1.25rem);
+  --fz-2: clamp(1.44rem, calc(1.4rem + 0.18vw), 1.56rem);
+  --fz-3: clamp(1.73rem, calc(1.65rem + 0.34vw), 1.95rem);
+  --fz-4: clamp(2.07rem, calc(1.94rem + 0.55vw), 2.44rem);
+  --fz-5: clamp(2.49rem, calc(2.29rem + 0.85vw), 3.05rem);
+}
+
+@include body_reset() {
+  background-color: var(--Light-Gray);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  font-family: $ff_r;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 35ch;
+  justify-content: center;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  box-shadow: 0 1px 0.3em 0 hsl(0 0% 50% / 0.5);
+}
+
+.card {
+  --bg: #fff;
+  --title-c: var(--Cyan);
+  padding: 1.5rem;
+  background-color: var(--bg);
+  color: var(--Grayish-Blue);
+  display: grid;
+  gap: 1rem;
+  &.cyan {
+    --bg: var(--Cyan);
+    --title-c: #fff;
+    color: #fff;
+  }
+  &.light {
+    --bg: var(--Light-Cyan);
+    --title-c: #fff;
+    color: #fff;
+    & .card__text {
+      color: var(--Light-Gray);
+      max-width: 25ch;
+    }
+  }
+  &__title {
+    font-family: $ff_b;
+    font-size: var(--fz-1);
+    color: var(--title-c);
+  }
+  &__subtitle {
+    font-family: $ff_b;
+    color: var(--Bright-Yellow);
+  }
+  &__signup {
+    border-radius: 0.5rem;
+    text-align: center;
+    padding: 0.7rem;
+    background-color: var(--Bright-Yellow);
+    color: #fff;
+    box-shadow: 0 1px 0.3em 0 hsl(0 0% 0% / 0.1);
+    transition: 200ms linear;
+    &:hover {
+      background-color: hsl(71, 73%, 44%);
+    }
+  }
+  &__price {
+    font-size: var(--fz-4);
+    font-family: $ff_b;
+    &__sub {
+      color: var(--Light-Gray);
+      font-size: var(--fz-0);
+      font-family: $ff_r;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  .card {
+    grid-column: 1/-1;
+    &.white {
+      .card__title {
+        font-size: var(--fz-2);
+      }
+      .card__subtitle {
+        font-size: var(--fz-1);
+      }
+    }
+    &.cyan {
+      grid-column: 1;
+    }
+    &.light {
+      grid-column: 2;
+    }
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
