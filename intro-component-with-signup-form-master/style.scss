@@ -1,0 +1,168 @@
+@use "../sass_helper/" as *;
+
+$ff_r: "Poppins-Regular";
+$ff_m: "Poppins-Medium";
+$ff_sb: "Poppins-SemiBold";
+$ff_b: "Poppins-Bold";
+
+@include font_face($family: $ff_r);
+@include font_face($family: $ff_m, $weight: 500);
+@include font_face($family: $ff_sb, $weight: 600);
+@include font_face($family: $ff_b, $weight: 700);
+
+:root {
+  --Red: hsl(0, 100%, 74%);
+  --Green: hsl(154, 59%, 51%);
+  --Blue: hsl(248, 32%, 49%);
+  --Dark-Blue: hsl(249, 10%, 26%);
+  --Grayish-Blue: hsl(246, 25%, 77%);
+  --White: hsl(0, 0%, 100%);
+  --fz--1: clamp(0.64rem, calc(0.71rem + -0.08vw), 0.69rem);
+  --fz-0: clamp(1rem, calc(1rem + 0vw), 1rem);
+  --fz-1: clamp(1.73rem, calc(0.65rem + 3.34vw), 3rem);
+  --border: 0.5rem;
+  --border--1: 0.3rem;
+  --bx-s: 0 5px 0 0 hsl(0 0% 0% / 0.3);
+}
+
+@include body-reset() {
+  --max-w: calc(100% - 3rem);
+  --bg: url(images/bg-intro-mobile.png);
+  font-family: $ff_r;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: var(--Red);
+  color: var(--White);
+  background-image: var(--bg);
+  text-align: center;
+  place-items: center;
+  gap: 4rem;
+}
+
+input {
+  width: 100%;
+  width: 100%;
+  padding: 1rem;
+  border-radius: var(--border--1);
+  border: 1px solid var(--Grayish-Blue);
+  color: var(--Dark-Blue);
+  &::placeholder {
+    font-family: $ff_m;
+  }
+  &.error {
+    border: 2px solid var(--Red);
+    background: no-repeat url(images/icon-error.svg) 95% 50%;
+    animation: 250ms linear wiggle;
+  }
+}
+
+.error {
+  color: var(--Red);
+}
+
+.header {
+  margin-block-start: 3rem;
+  max-width: var(--max-w);
+  &__title {
+    font-family: $ff_b;
+    line-height: 1.2;
+    font-size: var(--fz-1);
+  }
+  &__text {
+    margin-block-start: 1.5rem;
+    font-family: $ff_m;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-rows: auto 1fr;
+  max-width: var(--max-w);
+  &__text {
+    background-color: var(--Blue);
+    padding: 1rem 4rem;
+    border-radius: var(--border);
+    box-shadow: var(--bx-s);
+    strong {
+      font-family: $ff_sb;
+    }
+  }
+  &__form {
+    color: var(--Grayish-Blue);
+    background-color: var(--White);
+    border-radius: var(--border);
+    box-shadow: var(--bx-s);
+    padding: 1.5rem;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 1.125rem;
+    &__submit {
+      text-transform: uppercase;
+      font-family: $ff_sb;
+      width: 100%;
+      border: none;
+      border-radius: var(--border--1);
+      color: var(--White);
+      padding: 1rem;
+      background-color: var(--Green);
+      border-bottom: 3px solid hsl(154, 59%, 40%);
+      transition: 200ms linear;
+      &:hover {
+        cursor: pointer;
+        filter: brightness(1.1);
+      }
+    }
+    &__text {
+      font-size: var(--fz--1);
+      justify-self: end;
+    }
+    &__agree {
+      font-size: var(--fz--1);
+      a {
+        font-family: $ff_sb;
+        color: var(--Red);
+      }
+    }
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 769px) {
+  body {
+    --bg: url(images/bg-intro-desktop.png);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr auto;
+    padding-inline: 9vw;
+    gap: unset;
+  }
+  .header {
+    text-align: start;
+  }
+  .grid {
+    max-width: unset;
+    width: 100%;
+    &__form {
+      padding: 2.5rem;
+    }
+  }
+  .attribution {
+    grid-column: 1/-1;
+  }
+}
+
+@keyframes wiggle {
+  33% {
+    transform: translateX(-1%);
+  }
+  66% {
+    transform: translateX(1%);
+  }
+}
