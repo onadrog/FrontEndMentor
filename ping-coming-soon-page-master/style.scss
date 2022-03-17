@@ -1,0 +1,146 @@
+@use "../sass_helper/" as *;
+
+$ff_l: "LibreFranklin-Light";
+$ff_sb: "LibreFranklin-SemiBold";
+$ff_b: "LibreFranklin-Bold";
+
+@include font_face($family: $ff_l, $weight: 300);
+@include font_face($family: $ff_sb, $weight: 600);
+@include font_face($family: $ff_b, $weight: 700);
+
+:root {
+  --Blue: hsl(223, 87%, 63%);
+  --Pale-Blue: hsl(223, 100%, 73%);
+  --Light-Red: hsl(354, 100%, 66%);
+  --Gray: hsl(0, 0%, 59%);
+  --Very-Dark-Blue: hsl(209, 33%, 12%);
+  --fz--2: clamp(0.8rem, calc(0.89rem + -0.1vw), 0.87rem);
+  --fz--1: clamp(1rem, calc(1.06rem + -0.06vw), 1.04rem);
+  --fz-0: clamp(1.25rem, calc(1.25rem + 0vw), 1.25rem);
+  --fz-1: clamp(1.5rem, calc(0.48rem + 3.09vw), 3rem);
+}
+
+@include body_reset() {
+  font-family: $ff_l;
+  display: grid;
+  grid-template-rows: 1fr repeat(2, auto);
+  grid-template-columns: clamp(20ch, calc(10rem + 38.125vw), 50%);
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 2rem;
+  &__logo {
+    margin: 0 auto;
+  }
+  &__header {
+    line-height: 2.5;
+    text-align: center;
+    &__title {
+      font-size: var(--fz-1);
+      color: var(--Gray);
+      strong {
+        color: var(--Very-Dark-Blue);
+        font-family: $ff_b;
+      }
+    }
+    &__subtitle {
+      color: var(--Very-Dark-Blue);
+      font-size: var(--fz--1);
+    }
+  }
+  &__form {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 0.7rem;
+
+    &__input {
+      font-size: var(--fz--2);
+      padding: 1em 3em;
+      border-radius: 100vmax;
+      border: 1px solid var(--Pale-Blue);
+      &::placeholder {
+        font-family: $ff_sb;
+        color: var(--Pale-Blue);
+      }
+      &.error {
+        border-color: var(--Light-Red);
+        outline-color: var(--Light-Red);
+      }
+    }
+    &__submit {
+      font-family: $ff_sb;
+      font-size: var(--fz--1);
+      color: #fff;
+      background-color: var(--Blue);
+      border: none;
+      border-radius: 100vmax;
+      box-shadow: 0 1px 0.5rem 0 hsl(0 0% 0% / 0.4);
+      padding: 1em 3em;
+      transition: 200ms linear;
+      &:hover,
+      &:focus-visible {
+        cursor: pointer;
+        background-color: var(--Pale-Blue);
+      }
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  font-size: var(--fz--2);
+  flex-direction: column;
+  color: var(--Gray);
+  &__links {
+    display: flex;
+    justify-content: space-evenly;
+    padding-inline: calc(50% - 6rem);
+    a {
+      display: flex;
+      border-radius: 50%;
+      padding: 0.5em;
+      box-shadow: 0 0 0.1rem 0 hsl(0 0% 0% /0.3);
+      transition: 200ms linear;
+      &:hover,
+      &:focus {
+        background-color: var(--Blue);
+        color: #fff;
+      }
+    }
+  }
+  a {
+    color: var(--Blue);
+  }
+}
+
+span.error {
+  text-align: center;
+  color: var(--Light-Red);
+}
+
+@media screen and (min-width: 1025px) {
+  .grid__form {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1em;
+    &__input {
+      grid-row: 1;
+      grid-column: 1;
+    }
+    &__submit {
+      grid-row: 1;
+      grid-column: 2;
+    }
+    span.error {
+      grid-column: 1/-1;
+      text-align: start;
+      font-size: var(--fz--2);
+      padding-inline-start: 3rem;
+    }
+  }
+}
