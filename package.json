@@ -7,10 +7,12 @@
   "devDependencies": {
     "@parcel/transformer-postcss": "^2.3.2",
     "@parcel/transformer-sass": "2.3.2",
+    "@parcel/transformer-typescript-tsc": "^2.3.2",
     "autoprefixer": "^10.4.2",
     "css-declaration-sorter": "^6.1.4",
     "parcel": "^2.3.2",
-    "postcss-variable-compress": "^1.0.0"
+    "postcss-variable-compress": "^1.0.0",
+    "typescript": ">=3.0.0"
   },
   "browserslist": [
     "defaults"

@@ -1,0 +1,73 @@
+@use "../sass_helper/" as *;
+
+$ff: "Manrope-ExtraBold";
+
+@include font_face($family: $ff, $weight: 800);
+
+:root {
+  --Light-Cyan: hsl(193, 38%, 86%);
+  --Neon-Green: hsl(150, 100%, 66%);
+  --Grayish-Blue: hsl(217, 19%, 38%);
+  --Dark-Grayish-Blue: hsl(217, 19%, 24%);
+  --Dark-Blue: hsl(218, 23%, 16%);
+  --fz--2: clamp(1.12rem, calc(1.25rem + -0.14vw), 1.22rem);
+  --fz--1: clamp(1.4rem, calc(1.48rem + -0.09vw), 1.46rem);
+  --fz-0: clamp(1.75rem, calc(1.75rem + 0vw), 1.75rem);
+  --fz-1: clamp(2.1rem, calc(2.07rem + 0.13vw), 2.19rem);
+  --fz-2: clamp(2.52rem, calc(2.44rem + 0.32vw), 2.73rem);
+  --fz-3: clamp(3.02rem, calc(2.88rem + 0.59vw), 3.42rem);
+  --fz-4: clamp(3.63rem, calc(3.4rem + 0.97vw), 4.27rem);
+  --fz-5: clamp(4.35rem, calc(4.01rem + 1.48vw), 5.34rem);
+}
+@include body_reset() {
+  font-family: $ff;
+  background-color: var(--Dark-Blue);
+  color: var(--Light-Cyan);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.card {
+  background-color: var(--Dark-Grayish-Blue);
+  padding: 3rem;
+  border-radius: 0.5rem;
+  max-width: 18ch;
+  position: relative;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 0.3em hsl(0 0% 0% / 0.3));
+  &__title {
+    font-size: var(--fz--2);
+    color: var(--Neon-Green);
+  }
+  &__text {
+    margin-block: 1rem;
+  }
+  &__btn {
+    position: absolute;
+    border: none;
+    background-color: var(--Neon-Green);
+    border-radius: 50%;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 2em;
+    height: 2em;
+    transition: 200ms linear;
+    &:hover,
+    &:focus-visible {
+      cursor: pointer;
+      box-shadow: 0 0 0.5em var(--Neon-Green);
+    }
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: var(--Neon-Green);
+}

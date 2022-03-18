@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Advice generator app</title>
+    <link rel="stylesheet" href="style.scss">
+    <script src="index.ts" defer></script>
+
+  </head>
+
+  <body>
+    <main>
+      <h1 class="sr_only">Advice generator</h1>
+      <article class="card">
+        <h2 class="card__title">
+          Advice # <span class="card__number"></span>
+        </h2>
+        <p class="card__text"></p>
+        <picture>
+          <source srcset="images/pattern-divider-mobile.svg" media="(max-width: 768px)">
+          <source srcset="images/pattern-divider-desktop.svg" media="(min-width: 769px)">
+          <img src="images/pattern-divider-mobile.svg" alt="divider" class="divider">
+        </picture>
+        <button class="card__btn">
+          <svg aria-hidden="true" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M20 0H4a4.005 4.005 0 0 0-4 4v16a4.005 4.005 0 0 0 4 4h16a4.005 4.005 0 0 0 4-4V4a4.005 4.005 0 0 0-4-4ZM7.5 18a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"
+              fill="#202733" />
+          </svg>
+          <span class="sr_only">Get a new advice</span>
+        </button>
+      </article>
+    </main>
+
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+      Coded by <a target="_blank" href="https://sebastiengordano.com">Sébastien Gordano</a>
+    </footer>
+  </body>
+
+</html>
