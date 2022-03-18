@@ -1,0 +1,127 @@
+@use "../sass_helper/" as *;
+
+$ff_Pr: "Poppins-Regular";
+$ff_Or: "OpenSans-Regular";
+$ff_Pb: "Poppins-SemiBold";
+
+@include font_face($family: $ff_Pr);
+@include font_face($family: $ff_Or);
+@include font_face($family: $ff_Pb, $weight: 700);
+
+:root {
+  --Violet: hsl(257, 40%, 49%);
+  --Soft-Magenta: hsl(300, 69%, 71%);
+  --fz--1: clamp(0.64rem, calc(0.71rem + -0.08vw), 0.69rem);
+  --fz-0: clamp(1rem, calc(1rem + 0vw), 1rem);
+  --fz-1: clamp(1.73rem, calc(1.65rem + 0.34vw), 1.95rem);
+}
+
+@include body_reset() {
+  --bg: url(images/bg-mobile.svg);
+  background-image: var(--bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--Violet);
+  display: grid;
+  grid-template-rows: repeat(2, 1fr) auto;
+  color: #fff;
+  font-family: $ff_Pr;
+  grid-template-columns: clamp(30ch, 10rem + 41.6vw, 55ch);
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero {
+  display: grid;
+  gap: clamp(2rem, calc(3rem + 0.61vh), 7rem);
+  padding-block: 3rem;
+  &__logo {
+    max-width: 10rem;
+  }
+}
+
+.grid {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  grid-auto-rows: max-content;
+  text-align: center;
+  &__title {
+    font-size: var(--fz-1);
+    font-family: $ff_Pb;
+  }
+  &__text {
+    font-family: $ff_Or;
+  }
+  &__btn {
+    border: none;
+    background-color: #fff;
+    color: var(--Violet);
+    transition: 200ms linear;
+    border-radius: 100vmax;
+    padding: 0.8em clamp(3.125em, 100vw - 3.125em, 25%);
+    box-shadow: 0 0 0.7em hsl(0 0% 0% / 0.5);
+    &:hover,
+    &:focus-visible {
+      cursor: pointer;
+      color: #fff;
+      background-color: var(--Soft-Magenta);
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  font-size: var(--fz--1);
+  flex-direction: column;
+  color: #fff;
+  &__links {
+    font-size: var(--fz-0);
+    display: flex;
+    justify-content: space-evenly;
+    padding-inline: calc(50% - 6rem);
+    a {
+      display: flex;
+      border-radius: 50%;
+      padding: 0.5em;
+      border: 1px solid #fff;
+      transition: 200ms linear;
+      &:hover,
+      &:focus-visible {
+        cursor: pointer;
+        color: var(--Soft-Magenta);
+        border-color: var(--Soft-Magenta);
+      }
+    }
+  }
+  a {
+    color: var(--Blue);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  body {
+    --bg: url(images/bg-desktop.svg);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr auto;
+    padding-inline: 3rem;
+    column-gap: 3rem;
+  }
+  .grid {
+    justify-items: start;
+    text-align: start;
+    max-width: 40ch;
+  }
+  .socials {
+    grid-column: 1/-1;
+    &__links {
+      padding-inline: 0;
+      align-self: end;
+      margin-inline-end: 3em;
+      width: 10em;
+    }
+  }
+}
