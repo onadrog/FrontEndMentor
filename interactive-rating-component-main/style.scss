@@ -1,0 +1,136 @@
+@use "../sass_helper/" as *;
+
+$ff_r: "Overpass-Regular";
+$ff_b: "Overpass-Bold";
+
+@include font_face($family: $ff_r);
+@include font_face($family: $ff_b, $weight: 700);
+
+:root {
+  --Orange: hsl(25, 97%, 53%);
+  --White: hsl(0, 0%, 100%);
+  --Light-Grey: hsl(217, 12%, 63%);
+  --Medium-Grey: hsl(216, 12%, 54%);
+  --Dark-Blue: hsl(213, 20%, 18%);
+  --Very-Dark-Blue: hsl(216, 12%, 8%);
+  --fz-0: clamp(0.94rem, calc(0.94rem + 0vw), 0.94rem);
+}
+
+@include body_reset() {
+  font-family: $ff_r;
+  background-color: var(--Very-Dark-Blue);
+  color: var(--Medium-Grey);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-content: center;
+  align-items: center;
+}
+
+#main {
+  position: relative;
+  width: 35ch;
+  height: 35ch;
+}
+
+.card {
+  padding: 3em;
+  background: radial-gradient(
+    circle at top,
+    var(--Dark-Blue),
+    var(--Very-Dark-Blue) 120%
+  );
+  h2 {
+    color: var(--White);
+  }
+  transition: transform 500ms linear;
+  position: absolute;
+  border-radius: 1em;
+  transform-style: preserve-3d;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1em;
+  backface-visibility: hidden;
+  &__star {
+    padding: 0.5em;
+    background-color: var(--Dark-Blue);
+    border-radius: 50%;
+  }
+  &__choice {
+    color: var(--Orange);
+    background-color: var(--Dark-Blue);
+    border-radius: 100vmax;
+    padding: 0.8em;
+    line-height: 1;
+  }
+  &.result {
+    transform: rotateY(-180deg);
+  }
+  &.submit {
+    transform: rotateY(-180deg);
+  }
+  &.form {
+    z-index: 1;
+  }
+  &.back {
+    justify-items: center;
+    p {
+      text-align: center;
+    }
+  }
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.125em;
+    & button {
+      border: none;
+      border-radius: 100vmax;
+      grid-column: 1/-1;
+      background-color: var(--Orange);
+      color: var(--White);
+      transition: 200ms linear;
+      line-height: 1;
+      text-transform: uppercase;
+      font-family: $ff_b;
+      &:hover,
+      &:focus-visible {
+        cursor: pointer;
+        background-color: var(--White);
+        color: var(--Orange);
+      }
+    }
+    input:checked {
+      + label {
+        background-color: var(--Orange);
+        color: var(--White);
+      }
+    }
+    label {
+      display: flex;
+      width: 3em;
+      height: 3em;
+      background-color: var(--Dark-Blue);
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      line-height: 1;
+      font-family: $ff_b;
+      transition: 200ms linear;
+      &:hover,
+      &:focus-visible {
+        cursor: pointer;
+        color: var(--White);
+        background-color: var(--Medium-Grey);
+      }
+    }
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: var(--Light-Grey);
+}

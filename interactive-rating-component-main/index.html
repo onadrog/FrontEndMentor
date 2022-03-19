@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Interactive rating component</title>
+    <link rel="stylesheet" href="style.scss">
+    <script src="index.ts" defer></script>
+
+  </head>
+
+  <body>
+    <a href="#main" class="hidden_menu">Skip to main content</a>
+    <main id="main">
+      <h1 class="sr_only">Rating services survey</h1>
+      <section class="card front">
+        <img src="images/icon-star.svg" alt="Orange star icon" aria-hidden="true" class="card__star">
+        <h2>How did we do?</h2>
+        <p>
+          Please let us know how we did with your support request. All feedback is appreciated
+          to help us improve our offering!
+        </p>
+        <form action="/" method="post" class="card__form">
+          <input required class="sr_only" type="radio" name="rate" id="1" value="1">
+          <label for="1">1</label>
+          <input required class="sr_only" type="radio" name="rate" id="2" value="2">
+          <label for="2">2</label>
+          <input required class="sr_only" type="radio" name="rate" id="3" value="3">
+          <label for="3">3</label>
+          <input required class="sr_only" type="radio" name="rate" id="4" value="4">
+          <label for="4">4</label>
+          <input required class="sr_only" type="radio" name="rate" id="5" value="5">
+          <label for="5">5</label>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+      <section class="card back result">
+        <img src="images/illustration-thank-you.svg" alt="">
+        <p class="card__choice">You selected <span class="card__result"></span> out of 5</p>
+        <h2>Thank you!</h2>
+        <p>
+          We appreciate you taking the time to give a rating. If you ever need more support,
+          don’t hesitate to get in touch!
+        </p>
+      </section>
+    </main>
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+      Coded by <a target="_blank" href="https://sebastiengordano.com">Sébastien Gordano</a>
+    </footer>
+  </body>
+
+</html>
