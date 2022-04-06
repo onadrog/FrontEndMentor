@@ -1,0 +1,9 @@
+@mixin content_background($url, $color) {
+  .card__bg {
+    background: top right / auto no-repeat $url;
+    background-color: $color;
+    inset: 0 0 50% 0;
+    position: absolute;
+    @content;
+  }
+}

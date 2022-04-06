@@ -1,0 +1,223 @@
+@use "../sass_helper/" as *;
+@use "./sass/mixins/" as m;
+
+$ff_l: "Rubik-Light";
+$ff_r: "Rubik-Regular";
+$ff_m: "Rubik-Medium";
+
+@include font_face($family: $ff_l, $weight: 300);
+@include font_face($family: $ff_r);
+@include font_face($family: $ff_m, $weight: 500);
+
+:root {
+  --Blue: hsl(246, 80%, 60%);
+  --Light-red-w: hsl(15, 100%, 70%);
+  --Soft-blue: hsl(195, 74%, 62%);
+  --Light-red-s: hsl(348, 100%, 68%);
+  --Lime-green: hsl(145, 58%, 55%);
+  --Violet: hsl(264, 64%, 52%);
+  --Soft-orange: hsl(43, 84%, 65%);
+  --Very-dark-blue: hsl(226, 43%, 10%);
+  --Dark-blue: hsl(235, 46%, 20%);
+  --Desaturated-blue: hsl(235, 45%, 61%);
+  --Pale-Blue: hsl(236, 100%, 87%);
+  --fz--2: clamp(0.72rem, calc(0.8rem + -0.09vw), 0.78rem);
+  --fz--1: clamp(0.9rem, calc(0.95rem + -0.06vw), 0.94rem);
+  --fz-0: clamp(1.13rem, calc(1.13rem + 0vw), 1.13rem);
+  --fz-1: clamp(1.35rem, calc(1.33rem + 0.08vw), 1.41rem);
+  --fz-2: clamp(1.62rem, calc(1.57rem + 0.21vw), 1.76rem);
+  --fz-3: clamp(1.94rem, calc(1.85rem + 0.38vw), 2.2rem);
+  --fz-4: clamp(2.33rem, calc(2.19rem + 0.62vw), 2.75rem);
+  --fz-5: clamp(2.8rem, calc(2.58rem + 0.95vw), 3.43rem);
+}
+
+@include body_reset() {
+  background-color: var(--Very-dark-blue);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  color: #fff;
+  font-family: $ff_r;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 20rem);
+  gap: 1rem;
+  place-content: center;
+}
+
+.card {
+  display: grid;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  grid-template-rows: 3rem 1fr;
+  background-color: var(--Dark-blue);
+  &__profile {
+    grid-template-rows: 2fr 1fr;
+    grid-row: 1 / span 2;
+    &__header {
+      padding: 1rem;
+      background-color: var(--Blue);
+      border-end-start-radius: 1rem;
+      border-end-end-radius: 1rem;
+      display: flex;
+      gap: 1rem;
+      font-family: $ff_l;
+      line-height: 1.1;
+      font-size: var(--fz--1);
+    }
+    &__title {
+      font-family: $ff_l;
+      span {
+        color: var(--Pale-Blue);
+        font-size: var(--fz--2);
+      }
+    }
+  }
+  &__img__profile {
+    width: 4rem;
+    height: 4rem;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+  header:not(.card__profile__header) {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__menu {
+    border: 0;
+    background-color: transparent;
+    font-family: $ff_m;
+    color: var(--Pale-Blue);
+    z-index: 2;
+    &:hover,
+    &:focus-visible {
+      cursor: pointer;
+      color: #fff;
+    }
+  }
+  &__content {
+    background-color: inherit;
+    padding: 1rem;
+    border-start-start-radius: 1rem;
+    border-start-end-radius: 1rem;
+    grid-row: 2;
+    z-index: 1;
+    transition: filter 200ms linear;
+    &:hover {
+      cursor: pointer;
+      filter: brightness(1.5);
+    }
+  }
+  &__title {
+    font-family: $ff_m;
+    font-weight: 500;
+    font-size: var(--fz-0);
+    position: relative;
+  }
+  &__current {
+    font-size: var(--fz-2);
+    color: #fff;
+  }
+  &__prev {
+    font-size: var(--fz--1);
+  }
+  &__times {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--Pale-Blue);
+  }
+  &.exercise {
+    @include m.content_background(
+      url("images/icon-exercise.svg"),
+      var(--Lime-green)
+    );
+  }
+  &.play {
+    @include m.content_background(
+      url("images/icon-play.svg"),
+      var(--Soft-blue)
+    );
+  }
+  &.self-care {
+    @include m.content_background(
+      url("images/icon-self-care.svg"),
+      var(--Soft-orange)
+    );
+  }
+  &.social {
+    @include m.content_background(url("images/icon-social.svg"), var(--Violet));
+  }
+  &.study {
+    @include m.content_background(
+      url("images/icon-study.svg"),
+      var(--Light-red-s)
+    );
+  }
+  &.work {
+    @include m.content_background(
+      url("images/icon-work.svg"),
+      var(--Light-red-w)
+    );
+  }
+}
+
+form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  input:checked {
+    + label {
+      color: #fff;
+    }
+  }
+
+  label {
+    color: var(--Desaturated-blue);
+    &:hover {
+      cursor: pointer;
+      color: #fff;
+    }
+  }
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: var(--Lime-green);
+}
+
+@media screen and (min-width: 1024px) {
+  main {
+    grid-template-columns: repeat(4, 13rem);
+  }
+  .card__profile {
+    &__header {
+      flex-direction: column;
+    }
+    &__title {
+      font-size: var(--fz-3);
+    }
+  }
+  .card {
+    &__current {
+      font-size: var(--fz-3);
+      &::after {
+        content: "\A";
+        white-space: pre;
+      }
+    }
+  }
+  form,
+  .card__times {
+    flex-direction: column;
+    align-items: start;
+  }
+  form {
+    padding: 1rem;
+  }
+}

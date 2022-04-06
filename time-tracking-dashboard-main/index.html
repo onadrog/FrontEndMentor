@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Time tracking dashboard</title>
+    <link rel="stylesheet" href="style.scss">
+    <script type="module" src="src/index.ts"></script>
+  </head>
+
+  <body>
+    <a href="#main" class="hidden_menu">Skip to main content</a>
+    <main is="dashboard-card" id="main">
+      <h1 class="sr_only">Time tracking dashboard</h1>
+      <article class="card card__profile">
+        <header class="card__profile__header">
+          <img src="images/image-jeremy.png" alt="Jeremy Robson profile photo" class="card__img__profile">
+          <h2 class="card__profile__title">
+            <span>Report for</span><br aria-hidden="true">
+            Jeremy Robson
+          </h2>
+        </header>
+
+        <form action="#">
+          <input class="sr_only" type="radio" id="daily" value="daily" name="report">
+          <label for="daily">Daily</label>
+          <input class="sr_only" type="radio" id="weekly" value="weekly" name="report" checked>
+          <label for="weekly">Weekly</label>
+          <input class="sr_only" type="radio" id="monthly" value="monthly" name="report">
+          <label for="monthly">Monthly</label>
+        </form>
+      </article>
+    </main>
+    <footer class="attribution"> Challenge by <a href="https://www.frontendmentor.io?ref=challenge"
+        target="_blank">Frontend
+        Mentor </a>Coded by <a target="_blank" href="https://sebastiengordano.com">Sébastien
+        Gordano</a>
+    </footer>
+  </body>
+
+</html>
