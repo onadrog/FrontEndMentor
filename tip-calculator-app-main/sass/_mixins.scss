@@ -1,0 +1,7 @@
+@mixin grid_max_col($selector, $count: 3) {
+  @for $i from 1 through $count {
+    &#{$selector}:nth-of-type(#{$count}n + #{$i}) {
+      grid-column: $i;
+    }
+  }
+}

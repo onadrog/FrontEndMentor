@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Tip calculator app</title>
+    <link rel="stylesheet" href="style.scss" />
+    <script type="module" src="src/app.ts"></script>
+  </head>
+
+  <body>
+    <a href="#main" class="hidden_menu">Skip to main Content</a>
+    <h1 class="title">SPLI<br aria-hidden="true" />TTER</h1>
+    <main id="main">
+      <h2 class="sr_only">Tip Calculator</h2>
+      <form action="#" class="grid card">
+        <div class="grid card__inputs">
+          <fieldset>
+            <legend>Bill</legend>
+            <input
+              type="number"
+              name="bill_input"
+              id="bill"
+              min="1"
+              step="0.01"
+              placeholder="0"
+            />
+            <label for="bill" class="sr_only">Insert bill amount</label>
+          </fieldset>
+          <fieldset>
+            <legend>Select Tip %</legend>
+            <div class="grid grid--column">
+              <input
+                class="sr_only"
+                type="radio"
+                name="tip_selection"
+                id="5"
+                value="5"
+              />
+              <label class="btn" for="5">5%</label>
+              <input
+                class="sr_only"
+                type="radio"
+                name="tip_selection"
+                id="10"
+                value="10"
+              />
+              <label class="btn" for="10">10%</label>
+              <input
+                class="sr_only"
+                type="radio"
+                name="tip_selection"
+                id="15"
+                value="15"
+              />
+              <label class="btn" for="15">15%</label>
+              <input
+                class="sr_only"
+                type="radio"
+                name="tip_selection"
+                id="25"
+                value="25"
+              />
+              <label class="btn" for="25">25%</label>
+              <input
+                class="sr_only"
+                type="radio"
+                name="tip_selection"
+                id="50"
+                value="50"
+              />
+              <label class="btn" for="50">50%</label>
+              <input
+                is="other-option"
+                type="number"
+                name="tip_selection"
+                id="custom"
+                min="1"
+                max="100"
+                placeholder="Custom"
+              />
+              <label for="custom" class="sr_only"
+                >Insert a custom tip amount</label
+              >
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Number of People</legend>
+            <input
+              type="number"
+              name="number_ppl"
+              id="number_ppl"
+              min="1"
+              placeholder="0"
+            />
+            <label for="number_ppl" class="sr_only"
+              >Insert number of People</label
+            >
+          </fieldset>
+        </div>
+        <div class="grid card--dark">
+          <p>
+            Tip Amount<br aria-hidden="true" />
+            <span class="text-disabled">/ person</span>
+          </p>
+          <output name="total_amount">$0.00</output>
+          <p>
+            Total<br aria-hidden="true" />
+            <span class="text-disabled">/ person</span>
+          </p>
+          <output name="total_person">$0.00</output
+          ><button class="btn" type="reset" disabled>reset</button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor </a
+      >Coded by
+      <a target="_blank" href="https://sebastiengordano.com"
+        >Sébastien Gordano</a
+      >
+    </footer>
+  </body>
+</html>

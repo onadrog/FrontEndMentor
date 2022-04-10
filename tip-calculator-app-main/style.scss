@@ -1,0 +1,189 @@
+@use "../sass_helper/" as *;
+@use "./sass/mixins" as m;
+
+$ff: "SpaceMono-Bold";
+
+@include font_face($family: $ff, $weight: 700);
+
+:root {
+  --Strong-cyan: hsl(172, 67%, 45%);
+  --Very-dark-cyan: hsl(183, 100%, 15%);
+  --Disabled-cyan: hsl(183, 79%, 24%);
+  --Dark-grayish-cyan: hsl(186, 14%, 43%);
+  --Disabled-cyan-text: hsl(184, 87%, 21%);
+  --Grayish-cyan: hsl(184, 14%, 56%);
+  --Light-grayish-cyan: hsl(185, 41%, 84%);
+  --Very-light-grayish-cyan: hsl(189, 41%, 97%);
+  --White: hsl(0, 0%, 100%);
+
+  --fz--1: clamp(1.2rem, calc(1.27rem + -0.08vw), 1.25rem);
+  --fz-0: clamp(1.5rem, calc(1.5rem + 0vw), 1.5rem);
+  --fz-1: clamp(2.16rem, calc(2.1rem + 0.28vw), 2.34rem);
+  --br: 0.5rem;
+}
+
+@include body_reset() {
+  font-family: $ff, sans-serif;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  background-color: var(--Light-grayish-cyan);
+  place-items: center;
+}
+
+legend,
+fieldset {
+  color: var(--Dark-grayish-cyan);
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  font-size: var(--fz--2);
+  margin-block-end: var(--gap);
+}
+input {
+  appearance: textfield;
+  background-repeat: no-repeat;
+  background-position: 0.5rem 50%;
+  padding: 0.5rem;
+  text-align: end;
+  background-color: var(--Very-light-grayish-cyan);
+  color: var(--Very-dark-cyan);
+  border: 0;
+  border-radius: var(--br);
+
+  &:focus-visible {
+    //border: 1px solid var(--Strong-cyan);
+    outline: 2px solid var(--Strong-cyan);
+  }
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &:checked + label {
+    background-color: var(--Strong-cyan);
+    color: var(--Very-dark-cyan);
+  }
+  &[data-error="true"] {
+    outline: 2px solid red;
+  }
+}
+
+output {
+  color: var(--Strong-cyan);
+  font-size: var(--fz-1);
+  justify-self: end;
+}
+
+main {
+  max-width: 100vw;
+}
+
+.flash_error {
+  color: red;
+  font-size: var(--fz--2);
+}
+
+.card {
+  background-color: var(--White);
+  border-radius: 1rem;
+  padding: 2rem;
+  gap: var(--gap);
+  &--dark {
+    padding: inherit;
+    border-radius: inherit;
+    background-color: var(--Very-dark-cyan);
+    color: var(--White);
+    grid-template-columns: repeat(2, 1fr);
+    & .btn {
+      grid-column: 1/-1;
+    }
+    & p {
+      font-size: var(--fz--1);
+    }
+  }
+}
+
+.grid {
+  --gap: 1rem;
+  display: grid;
+  gap: var(--gap);
+  &--column {
+    @include m.grid_max_col($selector: " label", $count: 2);
+    grid-auto-columns: 1fr;
+  }
+}
+
+.title {
+  color: var(--Very-dark-cyan);
+  text-align: center;
+  font-size: var(--fz-0);
+  letter-spacing: 0.6rem;
+  line-height: 1.4;
+  margin-block: 1.625rem;
+  align-self: end;
+}
+
+.btn {
+  text-align: center;
+  border: 0;
+  padding: 0.3em;
+  border-radius: var(--br);
+  background-color: var(--Very-dark-cyan);
+  color: var(--White);
+  transition: 200ms linear;
+  text-transform: uppercase;
+  &[type="reset"] {
+    background-color: var(--Strong-cyan);
+    color: var(--Very-dark-cyan);
+  }
+  &:hover,
+  &:focus-visible {
+    cursor: pointer;
+    background-color: var(--Light-grayish-cyan);
+    color: var(--Very-dark-cyan);
+  }
+  &:disabled {
+    cursor: default;
+    background-color: var(--Disabled-cyan);
+    color: var(--Disabled-cyan-text);
+  }
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  align-self: end;
+}
+
+.attribution a {
+  color: var(--Very-dark-cyan);
+}
+
+.text-disabled {
+  color: var(--Grayish-cyan);
+  font-size: var(--fz--2);
+}
+#bill {
+  background-image: url(images/icon-dollar.svg);
+}
+#number_ppl {
+  background-image: url(images/icon-person.svg);
+}
+
+#custom {
+  width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  main {
+    max-width: 61%;
+  }
+  .card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid {
+    @include m.grid_max_col($selector: "--column label");
+  }
+}
