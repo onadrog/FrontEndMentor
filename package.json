@@ -1,25 +1,20 @@
 {
-  "name": "frontendmentor-challenges",
-  "version": "1.0.0",
-  "repository": "https://github.com/onadrog/FrontEndMentor.git",
-  "author": "onadrog <sebastien.gordano@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@parcel/transformer-postcss": "^2.3.2",
-    "@parcel/transformer-sass": "2.3.2",
-    "@parcel/transformer-typescript-tsc": "^2.3.2",
-    "autoprefixer": "^10.4.2",
-    "css-declaration-sorter": "^6.1.4",
-    "parcel": "^2.3.2",
-    "postcss-variable-compress": "^1.0.0",
-    "typescript": ">=3.0.0"
-  },
-  "browserslist": [
-    "defaults"
-  ],
-  "scripts": {
-    "build": "sh -c 'parcel build ${0}/index.html --no-source-maps'",
-    "dev": "sh -c 'parcel ${0}/index.html --no-cache'"
-  },
-  "dependencies": {}
+	"name": "frontendmentor-challenges",
+	"version": "1.0.0",
+	"repository": "https://github.com/onadrog/FrontEndMentor.git",
+	"author": "onadrog <sebastien.gordano@gmail.com>",
+	"license": "MIT",
+	"devDependencies": {
+		"@parcel/config-default": "^2.12.0",
+		"@parcel/transformer-sass": "2.12.0",
+		"@parcel/transformer-typescript-tsc": "^2.12.0",
+		"parcel": "^2.12.0",
+		"typescript": "^5.5.4"
+	},
+	"browserslist": ["defaults"],
+	"scripts": {
+		"build": "sh -c 'parcel build ${0}/index.html --no-source-maps'",
+		"dev": "sh -c 'parcel ${0}/index.html --no-cache'"
+	},
+	"@parcel/transformer-css": {}
 }

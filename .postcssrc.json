@@ -1,9 +1,0 @@
-{
-  "plugins": {
-    "autoprefixer": {},
-    "css-declaration-sorter": {
-      "order": "smacss"
-    },
-    "postcss-variable-compress": {}
-  }
-}
