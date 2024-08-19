@@ -1,0 +1,115 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol {
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+.hidden_menu {
+    position: absolute;
+    top: -10rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+    color: currentColor;
+
+    &:focus {
+        top: 0;
+        transition: top 350ms ease;
+    }
+}
+
+.sr_only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip-path: circle(0);
+}
+
+:root {
+    /* POPULATE ME */
+    --w-normal: 400;
+    --fs-0: 1rem;
+}
+
+
+@font-face {
+    /* POPULATE ME */
+    font-family: , system-ui, sans-serif;
+    src: local(),
+        url(format("truetype");
+    font-weight: var(--w-normal);
+    font-display: swap;
+    font-style: normal;
+}
+
+body {
+    text-rendering: optimizeSpeed;
+    min-height: 100svh;
+    line-height: 1.5;
+    font-size: var(--fs-0);
+    /* POPULATE ME */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hidden_menu:focus {
+        transition: top 350ms ease;
+    }
+}

@@ -1,7 +1,7 @@
 @mixin body_reset {
   body {
     text-rendering: optimizeSpeed;
-    min-height: 100vh;
+    min-height: 100svh;
     line-height: 1.5;
     font-size: var(--fz-0);
     @content;
