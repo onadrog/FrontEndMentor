@@ -92,9 +92,9 @@ h6 {
 
 @font-face {
     /* POPULATE ME */
-    font-family: , system-ui, sans-serif;
+    font-family:;
     src: local(),
-        url(format("truetype");
+        url()format("truetype");
     font-weight: var(--w-normal);
     font-display: swap;
     font-style: normal;
