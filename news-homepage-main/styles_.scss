@@ -1,0 +1,352 @@
+@use "../sass_helper/" as *;
+
+$ff: "inter";
+
+@include font_face($family: $ff, $weight: (400 900));
+
+* {
+  outline: 1px solid red;
+}
+
+:root {
+  --w-base: 400;
+  --w-bold: 700;
+  --w-giga-bold: 900;
+  --margin: 1rem;
+  --clr-p-orange: hsl(35, 77%, 62%);
+  --clr-p-red: hsl(5, 85%, 63%);
+  --clr-n-white: hsl(36, 100%, 99%);
+  --clr-n-gray-blue: hsl(233, 8%, 79%);
+  --clr-n-dark-blue: hsl(236, 13%, 42%);
+  --clr-n-giga-dark-blue: hsl(240, 100%, 5%);
+  // fonts
+  /* --fz--2: clamp(0.64rem, 0.7136rem + -0.0818vw, 0.6944rem); */
+  --fz--1: clamp(0.8rem, 0.8451rem + -0.0501vw, 0.8333rem);
+  --fz-0: clamp(1rem, 1rem + 0vw, 1rem);
+  --fz-1: clamp(1.2rem, 1.1824rem + 0.0751vw, 1.25rem);
+  /* --fz-2: clamp(1.44rem, 1.3969rem + 0.184vw, 1.5625rem); */
+  --fz-3: clamp(1.728rem, 1.6487rem + 0.3382vw, 1.9531rem);
+  --fz-4: clamp(2.0736rem, 1.9441rem + 0.5526vw, 2.4414rem);
+  --fz-5: clamp(2.4883rem, 1.9541rem + 2.2792vw, 4.0054rem);
+}
+
+@include body_reset() {
+  font-family: $ff, sans-serif;
+  font-weight: var(--w-base);
+  margin: 1rem;
+  background-color: var(--clr-n-white);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1.6rem,
+}
+
+.grid-main {
+  display: grid;
+  grid-template: auto repeat(2, 1fr) / none;
+  gap: 4rem;
+}
+
+.header {
+  --idx: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-nav {
+    position: fixed;
+    height: 100svh;
+    top: 0;
+    width: 100%;
+    background-color: var(--clr-n-white);
+    z-index: var(--idx);
+    padding-block-start: 5rem;
+
+    animation: 100ms ease-out menushadowout both,
+      200ms ease-out 100ms menufadeout both;
+
+    &--list {
+      display: grid;
+      gap: 2rem;
+
+      & a {
+        color: var(--clr-n-giga-dark-blue);
+        font-size: var(--fz-1);
+
+        &:hover {
+          color: var(--clr-p-red);
+        }
+      }
+    }
+  }
+
+  & .burger-menu {
+    z-index: calc(var(--idx) + 1);
+  }
+}
+
+
+.menu-btn {
+  display: none;
+
+  +.menu-icon {
+    content: url("assets/images/icon-menu.svg");
+    display: block;
+    animation: 300ms ease-in-out iconanimout both;
+  }
+
+  &:checked+.menu-icon {
+    content: url("assets/images/icon-menu-close.svg");
+    animation: 300ms ease-in-out iconanimin both;
+  }
+}
+
+.featured {
+  display: grid;
+  gap: 1rem;
+
+  &-title {
+    font-size: var(--fz-5);
+    font-weight: var(--w-giga-bold);
+    line-height: 1em;
+    color: var(--clr-n-giga-dark-blue);
+  }
+
+  &-desc p {
+    margin-block-end: 2rem;
+    color: var(--clr-n-giga-dark-blue);
+  }
+}
+
+.link-btn {
+  display: inline-block;
+  background-color: var(--clr-p-red);
+  padding: 1rem 2.6rem;
+  text-transform: uppercase;
+  color: var(--clr-n-giga-dark-blue);
+  font-weight: var(--w-bold);
+  letter-spacing: 0.2em;
+  font-size: var(--fz--1);
+
+  &:hover {
+    background-color: var(--clr-n-giga-dark-blue);
+    color: var(--clr-n-white);
+  }
+}
+
+.grid-news {
+  background-color: var(--clr-n-giga-dark-blue);
+  color: var(--clr-n-white);
+  padding: 2.6rem 1.6rem;
+  display: grid;
+  gap: 1.6rem;
+  grid-template-rows: auto repeat(3, 1fr);
+
+  &--article {
+    place-content: center;
+  }
+
+  &--title {
+    color: var(--clr-p-orange);
+    font-weight: var(--w-bold);
+    font-size: var(--fz-4);
+  }
+
+  &--article_title {
+    margin-block-end: var(--margin);
+    font-weight: var(--w-giga-bold);
+    font-size: var(--fz-1);
+    color: inherit;
+
+    &:hover {
+      color: var(--clr-p-orange);
+    }
+  }
+
+  &--article p {
+    color: var(--clr-n-gray-blue);
+  }
+}
+
+.grid-posts {
+  display: grid;
+  gap: 1rem;
+  grid-column: 1 / -1;
+
+  &--card {
+    display: grid;
+    grid-template: repeat(3, min-content) / auto 1fr;
+    column-gap: 1rem;
+
+  }
+
+  &--img {
+    grid-row: 1 / -1;
+  }
+
+  &--num {
+    color: var(--clr-p-red);
+    font-weight: var(--w-bold);
+    font-size: var(--fz-3);
+  }
+
+  &--title {
+    color: var(--clr-n-giga-dark-blue);
+    font-weight: var(--w-bold);
+    line-height: 1;
+
+    &:hover {
+      color: var(--clr-p-red);
+    }
+  }
+
+  &--desc {
+    color: var(--clr-n-dark-blue);
+  }
+}
+
+.attribution {
+  text-align: center;
+  font-size: var(--fz--1);
+
+  & a {
+    color: var(--clr-p-red);
+
+
+    &:hover {
+      color: var(--clr-n-giga-dark-blue);
+    }
+  }
+}
+
+/* ------ Here start the new css black magic territory ------ */
+
+// I say hey what's going on
+// Select the nav when the inpput is checked using the `:has()` selector
+// https://developer.mozilla.org/en-US/docs/Web/CSS/:has
+body:has(.menu-btn:checked) {
+  overflow-y: hidden;
+
+  & .header-nav {
+
+    animation: 300ms ease-in menufadein both,
+      100ms ease-in menushadowin 200ms forwards;
+  }
+}
+
+.grid-news--article:has(+ .grid-news--article) {
+  border-block-end: 1px solid var(--clr-n-dark-blue);
+}
+
+.container_main {
+  container: main / inline-size;
+}
+
+@container main (min-width: calc(1024px - 2rem)) {
+  .featured {
+    grid-template: auto 1fr / repeat(2, 1fr);
+
+    &>picture {
+      grid-column: span 2;
+    }
+  }
+
+  .grid-posts {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: inherit;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --margin: 2rem;
+  }
+
+  body {
+    --margin-body: 7svh;
+    margin: var(--margin-body) auto;
+    max-width: 80svw;
+    margin-block-end: 0;
+    min-height: calc(100svh - var(--margin-body));
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .grid-main {
+    grid-template: auto 1fr / 2fr 1fr;
+  }
+
+  .header-nav {
+    all: unset;
+
+    &--list {
+      display: flex;
+      gap: 1.6rem;
+    }
+  }
+
+}
+
+
+
+@keyframes menufadein {
+  from {
+    left: 100vw;
+  }
+
+  to {
+    left: 30vw;
+  }
+}
+
+@keyframes menufadeout {
+  from {
+    left: 30vw;
+  }
+
+  to {
+    left: 100vw;
+  }
+}
+
+@keyframes iconanimin {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 90deg;
+  }
+}
+
+@keyframes iconanimout {
+  from {
+    rotate: 90deg;
+  }
+
+  to {
+    rotate: 0deg;
+  }
+}
+
+@keyframes menushadowin {
+  from {
+    box-shadow: rgba(0, 0, 0, 0.0) 0px 0;
+  }
+
+  to {
+    box-shadow: rgba(0, 0, 0, 0.6) -30vw 0;
+  }
+}
+
+@keyframes menushadowout {
+  from {
+    box-shadow: rgba(0, 0, 0, 0.6) -30vw 0;
+  }
+
+  to {
+    box-shadow: rgba(0, 0, 0, 0.0) 0px 0;
+  }
+
+}

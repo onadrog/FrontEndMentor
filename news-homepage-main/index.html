@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="stylesheet" href="style.scss" />
+    <title>Frontend Mentor | News homepage</title>
+</head>
+
+<body>
+    <a href="#main" class="hidden_menu">Skip to main Content</a>
+    <header class="header">
+        <picture>
+            <img src="assets/images/logo.svg" alt="" />
+        </picture>
+        <div class="burger-menu" aria-hidden="true">
+            <label for="menu_toggle" aria-label="Toggle menu">
+                <input type="checkbox" class="menu-btn" id="menu_toggle" />
+                <span class="menu-icon"></span>
+            </label>
+        </div>
+        <nav class="header-nav">
+            <ul class="header-nav--list" role="list">
+                <li class="header-nav--item"><a href="/">Home</a></li>
+                <li class="header-nav--item"><a href="#news">New</a></li>
+                <li class="header-nav--item"><a href="#">Popular</a></li>
+                <li class="header-nav--item"><a href="#">Trending</a></li>
+                <li class="header-nav--item"><a href="#">Categories</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main" class="grid-main container_main">
+        <article class="featured">
+            <picture class="featured-image">
+                <source srcset="assets/images/image-web-3-desktop.jpg" media="(min-width: 768px)" />
+                <img src="assets/images/image-web-3-mobile.jpg" alt="" />
+            </picture>
+
+            <h1 class="featured-title">The Bright Future of Web 3.0?</h1>
+            <div class="featured-desc">
+                <p>We dive into the next evolution of the web that claims to put the power of the platforms back into
+                    the
+                    hands
+                    of
+                    the
+                    people.
+                    But is it really fulfilling its promise?</p>
+                <a href="#" class="link-btn">Read more</a>
+            </div>
+        </article>
+
+        <section class="grid-news" id="news">
+            <h2 class="grid-news--title">New</h2>
+            <article class="grid-news--article">
+                <h3>
+                    <a class="grid-news--article_title" href="#">Hydrogen VS Electric Cars</a>
+                </h3>
+                <p class="grid-news--article_desc">Will hydrogen-fueled cars ever catch up to EVs?</p>
+            </article>
+            <article class="grid-news--article">
+                <h3>
+                    <a class="grid-news--article_title" href="#">The Downsides of AI Artistry</a>
+                </h3>
+                <p class="grid-news--article_desc">What are the possible adverse effects of on-demand AI image
+                    generation?</p>
+            </article>
+            <article class="grid-news--article">
+                <h3>
+                    <a class="grid-news--article_title" href="#">Is VC Funding Drying Up?</a>
+                </h3>
+                <p class="grid-news--article_desc">Private funding by VC firms is down 50% YOY. We take a look at what
+                    that means.</p>
+            </article>
+        </section>
+
+        <div class="grid-posts">
+            <article class="grid-posts--card">
+                <picture class="grid-posts--img">
+                    <img src="assets/images/image-retro-pcs.jpg" alt="" width="100" />
+                </picture>
+                <p class="grid-posts--num">01</p>
+                <h3>
+                    <a class="grid-posts--title" href="#">Reviving Retro PCs</a>
+                </h3>
+                <p class="grid-posts--desc">What happens when old PCs are given modern upgrades?</p>
+            </article>
+
+            <article class="grid-posts--card">
+                <picture class="grid-posts--img">
+                    <img src="assets/images/image-top-laptops.jpg" alt="" width="100" />
+                </picture>
+                <p class="grid-posts--num">02</p>
+                <h3><a class="grid-posts--title" href="#">Top 10 Laptops of 2022</a></h3>
+                <p class="grid-posts--desc">Our best picks for various needs and budgets.</p>
+            </article>
+
+            <article class="grid-posts--card">
+                <picture class="grid-posts--img">
+                    <img src="assets/images/image-gaming-growth.jpg" alt="" width="100" />
+                </picture>
+                <p class="grid-posts--num">03</p>
+                <h3>
+                    <a class="grid-posts--title" href="#">The Growth of Gaming</a>
+                </h3>
+                <p class="grid-posts--desc">How the pandemic has sparked fresh opportunities.</p>
+            </article>
+        </div>
+    </main>
+    <footer class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor </a>Coded by
+        <a target="_blank" href="https://github.com/onadrog">onadrog</a>
+    </footer>
+</body>
+
+</html>
